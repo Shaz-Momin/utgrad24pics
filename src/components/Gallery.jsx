@@ -8,7 +8,16 @@ const Gallery = () => {
         <div className="min-h-screen w-full">
             <Nav />
             <div className="uppercase font-light tracking-widest py-16 text-2xl">Graduation Photos</div>
-            <div className="grid xl:grid-cols-4 xl:grid-rows-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mb-16 md:mx-32 mx-10 gap-2">
+            <div className="flex flex-wrap mb-16 mx-12 items-center justify-center">
+                {images.map((image, index) => (
+                    <div key={index} className="flex lg:w-80 md:w-80 w-96 p-1" onClick={() => window.location.href = `/utgrad24pics/assets/${image}`}>
+                        <Suspense fallback={<div>Loading...</div>}>
+                        <img src={`/utgrad24pics/assets/${image}`} alt="Graduation" className="object-contain" />
+                        </Suspense>
+                    </div>
+                ))}
+            </div>
+            {/* <div className="grid xl:grid-cols-4 xl:grid-rows-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mb-16 md:mx-32 mx-10 gap-2">
                 {images.map((image, index) => (
                     <div key={index} className="flex items-center justify-center" onClick={() => window.location.href = `/utgrad24pics/assets/${image}`}>
                         <Suspense fallback={<div>Loading...</div>}>
@@ -16,7 +25,7 @@ const Gallery = () => {
                         </Suspense>
                     </div>
                 ))}
-            </div>
+            </div> */}
         </div>
     )
 }
